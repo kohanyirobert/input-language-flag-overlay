@@ -33,4 +33,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="ja.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="en.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="hu.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="ilfo.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ilfo.ahk">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="build.props" />
+  </ItemGroup>
 </Project>
