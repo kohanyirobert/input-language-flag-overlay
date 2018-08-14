@@ -1,24 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?> 
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
   <ItemDefinitionGroup>
-    <PostBuildEvent>
-      <Command>echo for /f "tokens=* usebackq" %%f in (`where "Unicode $(PlatformArchitecture)-bit.bin"`) do (set bin=%%f)
-for /f "tokens=* usebackq" %%f in (`where "Unicode $(PlatformArchitecture)-bit.bin"`) do (set bin=%%f)
-if %errorlevel% neq 0 goto exit
+    <CustomBuildStep>
+      <Message>Compiling %(Inputs) to %(Outputs)</Message>
+      <Inputs>$(ProjectDir)$(ProjectName).ahk</Inputs>
+      <Outputs>$(TargetDir)$(ProjectName).exe</Outputs>
+      <Command>
+        echo for /f "tokens=* usebackq" %%f in (`where "Unicode $(PlatformArchitecture)-bit.bin"`) do (set bin=%%f)
+        for /f "tokens=* usebackq" %%f in (`where "Unicode $(PlatformArchitecture)-bit.bin"`) do (set bin=%%f)
+        if %errorlevel% neq 0 goto exit
 
-echo ahk2exe /in $(ProjectDir)\ilfo.ahk /icon $(ProjectDir)\ilfo.ico /bin "%bin%" /out $(TargetDir)\ilfo.exe
-ahk2exe /in $(ProjectDir)\ilfo.ahk /icon $(ProjectDir)\ilfo.ico /bin "%bin%" /out $(TargetDir)\ilfo.exe
-if %errorlevel% neq 0 goto exit
+        echo ahk2exe /in $(ProjectDir)$(ProjectName)$(ProjectName).ahk /icon $(ProjectDir)$(ProjectName).ico /bin "%bin%" /out $(TargetDir)$(ProjectName).exe
+        ahk2exe /in $(ProjectDir)$(ProjectName).ahk /icon $(ProjectDir)$(ProjectName).ico /bin "%bin%" /out $(TargetDir)$(ProjectName).exe
+        if %errorlevel% neq 0 goto exit
 
-echo copy /Y $(ProjectDir)\*.png $(TargetDir)
-copy /Y $(ProjectDir)\*.png $(TargetDir)
-if %errorlevel% neq 0 goto exit
+        echo copy /Y $(ProjectDir)*.png $(TargetDir)
+        copy /Y $(ProjectDir)*.png $(TargetDir)
+        if %errorlevel% neq 0 goto exit
 
-:exit</Command>
-    </PostBuildEvent>
+        :exit</Command>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>
