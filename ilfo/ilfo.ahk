@@ -110,7 +110,6 @@ ShowFlag()
 ; Main
 ShowFlag()
 
-
 ; Hotkeys
 #Space::
 {
