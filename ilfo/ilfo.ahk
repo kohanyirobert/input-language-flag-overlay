@@ -113,12 +113,3 @@ ShowFlag()
   ShowFlag()
   Return
 }
-
-#IfWinActive ahk_exe chrome.exe
-^d::
-{
-  Send, ^j ; Open Downloads
-  Send, ^w ; Close active tab - should be Downloads at this point
-  Return
-}
-#IfWinActive
