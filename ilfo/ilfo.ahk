@@ -16,9 +16,17 @@ INPUTLANGCHANGE_BACKWARD = 0x4
 HKL_PREV = 0x0
 HKL_NEXT = 0x1
 
+WS_EX_TRANSPARENT = 0x20
+
 ; Globals
 KeyboardLayoutListIndex := DllCall(GET_KEYBOARD_LAYOUT_INDEX, "Int")
 
+; Variables
+SplitPath, A_ScriptName,,,, ScriptNameNoExt
+EnvGet, UserProfilePath, USERPROFILE
+IniPath := UserProfilePath "\" ScriptNameNoExt ".ini"
+
+; Functions
 CopyLayout(Difference)
 {
   Global WM_INPUTLANGCHANGEREQUEST
@@ -85,19 +93,25 @@ HideFlag()
 
 ShowFlag()
 {
+  Global WS_EX_TRANSPARENT
+  Global IniPath
   Language := GetLanguage(A_ScriptHwnd)
   HideFlag()
   Gui, Margin , 0, 0
   Gui, Add, Picture,, %Language%.png
   Gui, +LastFound -Caption +AlwaysOnTop +ToolWindow -Border -Disabled -SysMenu -Caption
-  WinSet, ExStyle, +0x20 ; 0x20 = WS_EX_CLICKTHROUGH
-  Winset, Transparent, 10
+  WinSet, ExStyle, +%WS_EX_TRANSPARENT%
+  IniRead, Opacity, %IniPath%, Default, Opacity, 20
+  Winset, Transparent, %Opacity%
   Gui, Show, NoActivate
   Return
 }
 
+; Main
 ShowFlag()
 
+
+; Hotkeys
 #Space::
 {
   UpdateIndex(1)
