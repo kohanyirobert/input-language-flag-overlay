@@ -4,14 +4,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup />
   <ItemDefinitionGroup>
-    <PreBuildEvent>
+    <PostBuildEvent>
       <Command>echo for /f "tokens=* usebackq" %%f in (`where "Unicode $(PlatformArchitecture)-bit.bin"`) do (set bin=%%f)
 for /f "tokens=* usebackq" %%f in (`where "Unicode $(PlatformArchitecture)-bit.bin"`) do (set bin=%%f)
+if %errorlevel% neq 0 goto exit
+
 echo ahk2exe /in $(ProjectDir)\ilfo.ahk /icon $(ProjectDir)\ilfo.ico /bin "%bin%" /out $(TargetDir)\ilfo.exe
 ahk2exe /in $(ProjectDir)\ilfo.ahk /icon $(ProjectDir)\ilfo.ico /bin "%bin%" /out $(TargetDir)\ilfo.exe
+if %errorlevel% neq 0 goto exit
+
 echo copy /Y $(ProjectDir)\*.png $(TargetDir)
-copy /Y $(ProjectDir)\*.png $(TargetDir)</Command>
-    </PreBuildEvent>
+copy /Y $(ProjectDir)\*.png $(TargetDir)
+if %errorlevel% neq 0 goto exit
+
+:exit</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>
