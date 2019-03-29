@@ -98,13 +98,17 @@ ShowFlag()
   Language := GetLanguage(A_ScriptHwnd)
   HideFlag()
   Gui, Margin , 0, 0
-  Gui, Add, Picture,, %Language%.png
-  Gui, +LastFound -Caption +AlwaysOnTop +ToolWindow -Border -Disabled -SysMenu -Caption
-  WinSet, ExStyle, +%WS_EX_TRANSPARENT%
-  IniRead, Opacity, %IniPath%, Default, Opacity, 20
-  Winset, Transparent, %Opacity%
-  Gui, Show, NoActivate
-  Return
+  IniRead, Image, %IniPath%, %Language%, Image, %Language%.png
+  If (FileExist(Image))
+  {
+    Gui, Add, Picture,, %Image%
+    Gui, +LastFound -Caption +AlwaysOnTop +ToolWindow -Border -Disabled -SysMenu -Caption
+    WinSet, ExStyle, +%WS_EX_TRANSPARENT%
+    IniRead, Opacity, %IniPath%, Default, Opacity, 20
+    Winset, Transparent, %Opacity%
+    Gui, Show, NoActivate
+    Return
+  }
 }
 
 ; Main
