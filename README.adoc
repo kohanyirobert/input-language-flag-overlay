@@ -3,6 +3,20 @@
 = Input Language Flag Overlay
 
 Windows program to display the active keyboard layout using a big-ass semi-transparent flag overlay over the desktop.
+Custom images can be used through creating a configuration file at `%USERPROFILE%\ilfo.ini` with contents like this
+
+```
+[default]
+opacity=70
+
+[hu]
+image=red.png
+
+[en]
+image=en.png
+```
+
+Section and key names in the `.ini` file are case-insensitive.
 
 == Notes
 
@@ -14,7 +28,7 @@ Only tracks keyboard layout switching via the default hotkeys: kbd:[Win+Space] (
 
 * Install https://autohotkey.com/[AutoHotkey].
 Preferably the Unicode 64-bit version (tested with v1.1.29.01+).
-* Add `%Program Files%\AutoHotkey\Compiler` to your `%Path%`.
+* Add `%PROGRAMFILES%\AutoHotkey\Compiler` to your `%PATH%`.
 Needed by a custom build step in the Visual Studio project that `Ahk2Exe` to create an executable.
 * Checkout the source and open it in Visual Studio.
 Build the project by selecting Debug/Release and x86/x64.
