@@ -3,7 +3,7 @@
 #Warn
 
 ; Constants
-MODULE := DllCall("LoadLibrary", "Str", "ilfo.dll", "Ptr")
+MODULE := DllCall("LoadLibrary", "Str", "ilo.dll", "Ptr")
 
 GET_KEYBOARD_LAYOUT_INDEX := DllCall("GetProcAddress", "Ptr", MODULE, "AStr", "GetKeyboardLayoutIndex", "Ptr")
 SET_KEYBOARD_LAYOUT_INDEX := DllCall("GetProcAddress", "Ptr", MODULE, "AStr", "SetKeyboardLayoutIndex", "Ptr")

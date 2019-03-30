@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{1AA09E44-D558-4C26-A732-FD799CC73074}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ilfo</RootNamespace>
+    <RootNamespace>ilo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -156,7 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="ilfo.cpp" />
+    <ClCompile Include="ilo.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -167,14 +167,14 @@
   <ItemGroup>
     <Image Include="en.png" />
     <Image Include="hu.png" />
-    <Image Include="ilfo.ico" />
+    <Image Include="ilo.ico" />
     <Image Include="ja.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="build.props">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ilfo.ahk">
+    <None Include="ilo.ahk">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

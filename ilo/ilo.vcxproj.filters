@@ -26,7 +26,7 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ilfo.cpp">
+    <ClCompile Include="ilo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
@@ -43,12 +43,12 @@
     <Image Include="hu.png">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="ilfo.ico">
+    <Image Include="ilo.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ilfo.ahk">
+    <None Include="ilo.ahk">
       <Filter>Source Files</Filter>
     </None>
     <None Include="build.props" />

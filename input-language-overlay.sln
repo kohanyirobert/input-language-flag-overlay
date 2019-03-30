@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ilfo", "ilfo\ilfo.vcxproj", "{1AA09E44-D558-4C26-A732-FD799CC73074}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ilo", "ilo\ilo.vcxproj", "{1AA09E44-D558-4C26-A732-FD799CC73074}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

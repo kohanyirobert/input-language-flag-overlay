@@ -1,9 +1,9 @@
 :experimental:
 
-= Input Language Flag Overlay
+= Input Language Overlay
 
-Windows program to display the active keyboard layout using a big-ass semi-transparent flag overlay over the desktop.
-Custom images can be used through creating a configuration file at `%USERPROFILE%\ilfo.ini` with contents like this
+Windows program to display the active keyboard layout using a big-ass semi-transparent overlay over the desktop.
+Custom images can be used through creating a configuration file at `%USERPROFILE%\ilo.ini` with contents like this
 
 ```
 [default]
