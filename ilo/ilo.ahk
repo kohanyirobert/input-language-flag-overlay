@@ -102,7 +102,7 @@ ShowFlag()
   If (FileExist(Image))
   {
     Gui, Add, Picture,, %Image%
-    Gui, +LastFound -Caption +AlwaysOnTop +ToolWindow -Border -Disabled -SysMenu -Caption
+    Gui, +LastFound -Caption +AlwaysOnTop +ToolWindow -Border -Disabled -SysMenu
     WinSet, ExStyle, +%WS_EX_TRANSPARENT%
     IniRead, Opacity, %IniPath%, Default, Opacity, 20
     Winset, Transparent, %Opacity%
