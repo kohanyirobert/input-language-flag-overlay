@@ -115,6 +115,7 @@ ShowFlag()
 ShowFlag()
 
 ; Hotkeys
+Pause::
 #Space::
 {
   UpdateIndex(1)
@@ -123,6 +124,7 @@ ShowFlag()
   return
 }
 
++Pause::
 +#Space::
 {
   UpdateIndex(-1)
