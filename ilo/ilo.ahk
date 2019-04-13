@@ -29,20 +29,20 @@ IniPath := UserProfilePath "\" ScriptNameNoExt ".ini"
 ; Functions
 CopyLayout(Difference)
 {
-  Global WM_INPUTLANGCHANGEREQUEST
-  Global INPUTLANGCHANGE_BACKWARD, INPUTLANGCHANGE_FORWARD
-  Global HKL_PREV, HKL_NEXT
-  Global COPY_KEYBOARD_LAYOUT, SET_KEYBOARD_LAYOUT_INDEX
-  Global KeyboardLayoutListIndex
-  If (Difference < 0)
+  global WM_INPUTLANGCHANGEREQUEST
+  global INPUTLANGCHANGE_BACKWARD, INPUTLANGCHANGE_FORWARD
+  global HKL_PREV, HKL_NEXT
+  global COPY_KEYBOARD_LAYOUT, SET_KEYBOARD_LAYOUT_INDEX
+  global KeyboardLayoutListIndex
+  if (Difference < 0)
   {
     SendMessage, WM_INPUTLANGCHANGEREQUEST, INPUTLANGCHANGE_BACKWARD, HKL_PREV,, A
   }
-  Else
+  else
   {
     SendMessage, WM_INPUTLANGCHANGEREQUEST, INPUTLANGCHANGE_FORWARD, HKL_NEXT,, A
   }
-  If (!DllCall(COPY_KEYBOARD_LAYOUT, "Ptr", WinExist("A")))
+  if (!DllCall(COPY_KEYBOARD_LAYOUT, "Ptr", WinExist("A")))
   {
     DllCall(SET_KEYBOARD_LAYOUT_INDEX, "Int", KeyboardLayoutListIndex)
   }
@@ -50,56 +50,56 @@ CopyLayout(Difference)
 
 UpdateIndex(Difference)
 {
-  Global KeyboardLayoutListIndex
+  global KeyboardLayoutListIndex
   KeyboardLayoutListLength := DllCall("GetKeyboardLayoutList", "Int", 0, "Ptr", 0)
-  If (Difference < 0)
+  if (Difference < 0)
   {
-    If (KeyboardLayoutListIndex == 0)
+    if (KeyboardLayoutListIndex == 0)
     {
       KeyboardLayoutListIndex := KeyboardLayoutListLength - 1
     }
-    Else
+    else
     {
       KeyboardLayoutListIndex--
     }
   }
-  Else
+  else
   {
-    If (KeyboardLayoutListIndex == KeyboardLayoutListLength - 1)
+    if (KeyboardLayoutListIndex == KeyboardLayoutListLength - 1)
     {
       KeyboardLayoutListIndex := 0
     }
-    Else
+    else
     {
       KeyboardLayoutListIndex++
     }
   }
-  Return
+  return
 }
 
 GetLanguage(Window)
 {
-  Global GET_ACTIVE_KEYBOARD_LAYOUT_LANGUAGE
+  global GET_ACTIVE_KEYBOARD_LAYOUT_LANGUAGE
   VarSetCapacity(Language, 9)
   DllCall(GET_ACTIVE_KEYBOARD_LAYOUT_LANGUAGE, "Ptr", Window, "WStr", Language)
-  Return Language
+  return Language
 }
 
 HideFlag()
 {
   Gui, Destroy
-  Return
+  return
 }
 
 ShowFlag()
 {
-  Global WS_EX_TRANSPARENT
-  Global IniPath
+  global WS_EX_TRANSPARENT
+  global IniPath
   Language := GetLanguage(A_ScriptHwnd)
   HideFlag()
   Gui, Margin , 0, 0
   IniRead, Image, %IniPath%, %Language%, Image, %Language%.png
-  If (FileExist(Image))
+  if (FileExist(Image))
   {
     Gui, Add, Picture,, %Image%
     Gui, +LastFound -Caption +AlwaysOnTop +ToolWindow -Border -Disabled -SysMenu
@@ -107,7 +107,7 @@ ShowFlag()
     IniRead, Opacity, %IniPath%, Default, Opacity, 20
     Winset, Transparent, %Opacity%
     Gui, Show, NoActivate
-    Return
+    return
   }
 }
 
@@ -120,7 +120,7 @@ ShowFlag()
   UpdateIndex(1)
   CopyLayout(1)
   ShowFlag()
-  Return
+  return
 }
 
 +#Space::
@@ -128,5 +128,5 @@ ShowFlag()
   UpdateIndex(-1)
   CopyLayout(-1)
   ShowFlag()
-  Return
+  return
 }

@@ -5,6 +5,8 @@
 Windows program to display the active keyboard layout using a big-ass semi-transparent overlay over the desktop.
 Custom images can be used through creating a configuration file at `%USERPROFILE%\ilo.ini` with contents like this
 
+Edit with http://fincs.ahk4.net/scite4ahk/[SciTE4AutoHotkey].
+
 ```
 [default]
 opacity=70
